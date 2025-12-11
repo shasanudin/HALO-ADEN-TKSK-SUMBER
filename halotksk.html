@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaduan Masyarakat - TKSK Sumber</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c5aa0;
+            --secondary-color: #e63946;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #2a9d8f;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f0f4f8;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: var(--shadow);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: var(--radius);
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1d3557 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #c1121f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        /* Form Container */
+        .form-container {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .form-container p {
+            margin-bottom: 25px;
+            color: #666;
+        }
+        
+        /* Info Section */
+        .info-section {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .info-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .info-box {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .info-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-box h3 i {
+            color: var(--accent-color);
+        }
+        
+        .info-box ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .info-box li {
+            margin-bottom: 8px;
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #555;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Google Form iframe */
+        .google-form-container {
+            width: 100%;
+            height: 700px;
+            border: none;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .form-container, .info-section {
+                padding: 20px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        /* Instructions Box */
+        .instructions {
+            background-color: #e7f3ff;
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .instructions h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">TKSK</div>
+                    <div class="logo-text">
+                        <h1>TKSK SUMBER</h1>
+                        <p>Tenaga Kesejahteraan Sosial Kecamatan Sumber</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">Beranda</a></li>
+                        <li><a href="#form">Form Pengaduan</a></li>
+                        <li><a href="#info">Informasi</a></li>
+                        <li><a href="#kontak">Kontak</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Layanan Pengaduan Masyarakat</h2>
+            <p>Saluran resmi untuk menyampaikan keluhan, pengaduan, dan masukan terkait penyaluran bantuan sosial di Kecamatan Sumber. Suara Anda membantu kami meningkatkan kualitas pelayanan.</p>
+            <a href="#form" class="btn">Ajukan Pengaduan</a>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main class="main-content" id="form">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Form Section -->
+                <div class="form-container">
+                    <h2><i class="fas fa-edit"></i> Formulir Pengaduan Online</h2>
+                    <p>Isi formulir di bawah ini untuk melaporkan keluhan atau pengaduan terkait bantuan sosial di wilayah Kecamatan Sumber.</p>
+                    
+                    <div class="instructions">
+                        <h3><i class="fas fa-info-circle"></i> Petunjuk Pengisian:</h3>
+                        <ol>
+                            <li>Isi semua data yang diminta dengan lengkap dan benar</li>
+                            <li>Sampaikan pengaduan secara jelas dan terperinci</li>
+                            <li>Lampirkan bukti pendukung jika ada (foto, dokumen, dll)</li>
+                            <li>Pengaduan akan diproses maksimal 7 hari kerja</li>
+                            <li>Nomor tiket pengaduan akan dikirim via SMS/WhatsApp</li>
+                        </ol>
+                    </div>
+                    
+                    <!-- Google Form Embed -->
+                    <div class="google-form-container">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfIuXCR2EOwXyyD1kIk4Lp8RlPxK9mMOh_rsFTRuO8OYSh_jg/viewform?embedded=true" 
+                                width="100%" 
+                                height="100%" 
+                                frameborder="0" 
+                                marginheight="0" 
+                                marginwidth="0">
+                            Memuat…
+                        </iframe>
+                    </div>
+                    
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #777; text-align: center;">
+                        <i class="fas fa-shield-alt"></i> Data Anda dilindungi dan kerahasiaan terjamin
+                    </p>
+                </div>
+                
+                <!-- Information Section -->
+                <div class="info-section" id="info">
+                    <h2><i class="fas fa-info-circle"></i> Informasi Penting</h2>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Jenis Pengaduan yang Dapat Disampaikan</h3>
+                        <ul>
+                            <li>Penyaluran bantuan sosial tidak tepat sasaran</li>
+                            <li>Keterlambatan penyaluran bantuan sosial</li>
+                            <li>Penerima bantuan tidak memenuhi kriteria</li>
+                            <li>Pungutan liar terkait bantuan sosial</li>
+                            <li>Kualitas bantuan tidak sesuai standar</li>
+                            <li>Masalah pendataan penerima bantuan</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-clock"></i> Proses Penanganan Pengaduan</h3>
+                        <ol>
+                            <li><strong>Verifikasi</strong> - Pengaduan diverifikasi dalam 1-2 hari kerja</li>
+                            <li><strong>Investigasi</strong> - Tim TKSK melakukan investigasi lapangan</li>
+                            <li><strong>Penanganan</strong> - Penyelesaian sesuai prosedur berlaku</li>
+                            <li><strong>Tindak Lanjut</strong> - Pemberitahuan hasil kepada pelapor</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-user-shield"></i> Perlindungan Pelapor</h3>
+                        <p>Identitas pelapor dirahasiakan dan dilindungi sesuai peraturan perundang-undangan. Tidak ada tindakan balasan terhadap pelapor yang menyampaikan pengaduan dengan itikad baik.</p>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="contact-info" id="kontak">
+                        <h3><i class="fas fa-address-book"></i> Kontak TKSK Sumber</h3>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Alamat Kantor</strong>
+                                <p>Jl. Raya Sumber No. 123, Kecamatan Sumber</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Telepon</strong>
+                                <p>(0283) 1234567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <p>tksk.sumber@example.id</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Jam Operasional</strong>
+                                <p>Senin - Jumat: 08.00 - 16.00 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TKSK SUMBER</h3>
+                    <p>Tenaga Kesejahteraan Sosial Kecamatan Sumber bertugas untuk memastikan penyaluran bantuan sosial tepat sasaran dan sesuai dengan peraturan yang berlaku.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Layanan</h3>
+                    <a href="#form">Formulir Pengaduan</a>
+                    <a href="#info">Informasi Bantuan Sosial</a>
+                    <a href="#kontak">Kontak Kami</a>
+                    <a href="#">Statistik Pengaduan</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat dan Ketentuan</a>
+                    <a href="#">Prosedur Pengaduan</a>
+                    <a href="#">FAQ</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 TKSK Kecamatan Sumber. Hak Cipta Dilindungi.</p>
+                <p>Layanan Pengaduan Masyarakat Terintegrasi</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling untuk navigasi
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Menambahkan class active pada menu yang sesuai dengan halaman yang sedang dilihat
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section, .main-content');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if(pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Jika di bagian atas halaman, aktifkan link Beranda
+            if(pageYOffset < 100) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === '#') {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+        
+        // Konfirmasi sebelum mengirim form
+        document.addEventListener('DOMConten
